@@ -1,0 +1,21 @@
+<div class="row row-cols-1 row-cols-md-3 mt-3">
+    <div *ngFor="let product of productcatalog | async">
+        <div class="col mb-4">
+            <div class="card">
+                <div class="view overlay">
+                    <img class="card-img-top" :src="{{product.image}}" alt="Card image cap">
+                    <a [routerLink]="'/products/' + product._id"> 
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="card-body">   
+                    <a [routerLink]="'/products/' + product._id">{{ product.name }}</a>
+                    <p class="card-text">{{ product.shortDescription }}</p>
+                    <h5>{{ product.price }} SEK</h5>
+                    <a class="btn btn-green btn-md blue-gradient" [routerLink]="'/products/' + product._id">VIEW MORE</a>
+                    <button class="btn btn-black btn-md" (click)="addToCart(product, 1)"><i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Add To Cart</button>
+                </div>       
+            </div>
+        </div>
+    </div>
+</div>
